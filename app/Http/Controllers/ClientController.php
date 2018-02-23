@@ -40,46 +40,67 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        // Salvar daods no Banco
-        request()->validate([
-            'tipocliente' => 'required',
-            'cpf'=> 'required',
-            'nascimento'=> 'required',
-            'nome'=> 'required',
-            'sobrenome'=> 'required|max:15',
-            'cep'=> 'required|max:8',
-            'logradouro'=> 'required',
-            'numero'=> 'required',
-            //'complemento'=> 'required',
-            'bairro'=> 'required',
-            'cidade'=> 'required',
-            'uf'=> 'required|max:8',
-            'cnpj'=> 'required',
-            'razao'=> 'required',
-            'fantasia'=> 'required',
+        $tipocli = $request->input("tipocliente");
+        $dn = $request->input("nascimento");
+        // Se a escolha for Pessoa Jurídica
+        if($tipocli == 1){
+            request()->validate([
+                'tipocliente' => 'required',
+                'cep'=> 'required',
+                'logradouro'=> 'required',
+                'numero'=> 'required',
+                'bairro'=> 'required',
+                'cidade'=> 'required',
+                'uf'=> 'required',
+                'cnpj'=> 'required',
+                'razao'=> 'required',
+                'fantasia'=> 'required',
+            ]);
 
-        ]);
-        $dn=$request->input("nascimento");
-        list($anoniver, $mesniver, $dianiver) = explode('-', $dn);
-
-        // Descobre que dia é hoje e retorna a unix timestamp
-        $hoje = mktime(0, 0, 0, date('m'), date('d'), date('Y'));
-        // Descobre a unix timestamp da data de nascimento do fulano
-        $nascimento = mktime( 0, 0, 0, $mesniver, $dianiver, $anoniver);
-        // Depois apenas fazemos o cálculo já citado :)
-        $idade = floor((((($hoje - $nascimento) / 60) / 60) / 24) / 365.25);
-
-        if($idade < 19) {
-            echo "<br>Usuário não pode ser cadastrado na base de dados pois tem a idade menor que 19 anos";
-        ?>
-            <a href="javascript:history.back()" id="dark">Voltar</a>
-        <?php
-        }
-        else {
-            request()->except(['complemento']);
             Client::create($request->all());
-            return redirect()->route('client.index')->with('sucess', 'Cadastro realizado com sucesso');
+            return redirect()->route('client.index')->with('sucess', 'Cadastro de Pessoa Jurídica realizado com sucesso');
+        }else{
+        // Se a escolha for pessoa Física
+
+            list($anoniver, $mesniver, $dianiver) = explode('-', $dn);
+
+            // Descobre que dia é hoje e retorna a unix timestamp
+            $hoje = mktime(0, 0, 0, date('m'), date('d'), date('Y'));
+            // Descobre a unix timestamp da data de nascimento do fulano
+            $nascimento = mktime( 0, 0, 0, $mesniver, $dianiver, $anoniver);
+            // Depois apenas fazemos o cálculo já citado :)
+            $idade = floor((((($hoje - $nascimento) / 60) / 60) / 24) / 365.25);
+
+
+            if($idade < 19) {
+                echo "<br>Usuário não pode ser cadastrado na base de dados pois tem a idade menor que 19 anos";
+                ?>
+                <a href="javascript:history.back()" id="dark">Voltar</a>
+                <?php
+            }
+            else {
+
+                request()->validate([
+                    'tipocliente' => 'required',
+                    'cpf'=> 'required',
+                    'nascimento'=> 'required',
+                    'nome'=> 'required',
+                    'sobrenome'=> 'required|max:15',
+                    'cep'=> 'required|max:8',
+                    'logradouro'=> 'required',
+                    'numero'=> 'required',
+                    'bairro'=> 'required',
+                    'cidade'=> 'required',
+                    'uf'=> 'required|max:8',
+                ]);
+
+
+                //request()->except(['complemento']);
+                Client::create($request->all());
+                return redirect()->route('client.index')->with('sucess', 'Cadastro de Pessoa Física realizado com sucesso');
+            }
         }
+
     }
 
     /**
@@ -117,6 +138,9 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        //dd(request()->input([tipocliente]));
+
         // Atualizar dados do cliente
 
         request()->validate([
