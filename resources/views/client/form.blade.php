@@ -17,7 +17,7 @@
     <div class="col-xs-4">
         <div class="form-group">
             <strong>Sobrenome :</strong>
-            {!! Form::text('sobrenome', null, ['placeholder'=> 'Sobrenome', 'class' => 'form-control']) !!}
+            {!! Form::text('sobrenome', null, ['placeholder'=> 'Sobrenome', 'class' => 'form-control', 'maxlength' => 15 ]) !!}
         </div>
     </div>
     <div class="col-xs-3">
@@ -53,7 +53,7 @@
     <div class="col-xs-7">
         <div class="form-group">
             <strong>Cep :</strong>
-            {!! Form::text('cep', null, ['placeholder'=> 'Cep', 'class' => 'form-control']) !!}
+            {!! Form::text('cep', null, ['placeholder'=> 'Cep', 'class' => 'form-control','maxlength' => 8]) !!}
         </div>
     </div>
     <div class="col-xs-5">
@@ -91,7 +91,7 @@
     <div class="col-xs-3">
         <div class="form-group">
             <strong>UF :</strong>
-            {!! Form::text('uf', null, ['placeholder'=> 'UF', 'class' => 'form-control']) !!}
+            {!! Form::text('uf', null, ['placeholder'=> 'UF', 'class' => 'form-control','maxlength' => 8]) !!}
         </div>
     </div>
 
