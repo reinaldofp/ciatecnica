@@ -6,49 +6,64 @@
 
         </div>
     </div>
+    <?php
+        $tipo = 2;
+        if($tipo == 1){
+            // lista input de pessoa Jurídica
+        ?>
 
-    <div class="col-xs-3">
-        <div class="form-group">
+            <div class="col-xs-2">
+                <div class="form-group">
+                    {!! Form::text('cnpj', null, ['placeholder'=> 'CNPJ', 'class' => 'form-control']) !!}
+                </div>
+            </div>
+            <div class="col-xs-5">
+                <div class="form-group">
 
-            {!! Form::text('nome', null, ['placeholder'=> 'Nome', 'class' => 'form-control']) !!}
-        </div>
-    </div>
-    <div class="col-xs-4">
-        <div class="form-group">
+                    {!! Form::text('razao', null, ['placeholder'=> 'Razao Social', 'class' => 'form-control']) !!}
+                </div>
+            </div>
+            <div class="col-xs-5">
+                <div class="form-group">
 
-            {!! Form::text('sobrenome', null, ['placeholder'=> 'Sobrenome', 'class' => 'form-control', 'maxlength' => 15 ]) !!}
-        </div>
-    </div>
-    <div class="col-xs-3">
-        <div class="form-group">
+                    {!! Form::text('fantasia', null, ['placeholder'=> 'Nome Fantasia', 'class' => 'form-control']) !!}
+                </div>
+            </div>
+        <?php
+        }else{
+            // Lista inputs de pessoa Física
+        ?>
+            <div class="col-xs-3">
+                <div class="form-group">
 
-            {!! Form::text('cpf', null, ['placeholder'=> 'CPF', 'class' => 'form-control']) !!}
-        </div>
-    </div>
-    <div class="col-xs-2">
-        <div class="form-group">
+                    {!! Form::text('nome', null, ['placeholder'=> 'Nome', 'class' => 'form-control']) !!}
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
 
-            {!! Form::date('nascimento', null, ['placeholder'=> 'Nascimento', 'class' => 'form-control']) !!}
-        </div>
-    </div>
-    <div class="col-xs-2">
-        <div class="form-group">
+                    {!! Form::text('sobrenome', null, ['placeholder'=> 'Sobrenome', 'class' => 'form-control', 'maxlength' => 15 ]) !!}
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="form-group">
 
-            {!! Form::hidden('cnpj', null, ['placeholder'=> 'CNPJ', 'class' => 'form-control']) !!}
-        </div>
-    </div>
-    <div class="col-xs-5">
-        <div class="form-group">
+                    {!! Form::text('cpf', null, ['placeholder'=> 'CPF', 'class' => 'form-control']) !!}
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <div class="form-group">
 
-            {!! Form::hidden('razao', null, ['placeholder'=> 'Razao Social', 'class' => 'form-control']) !!}
-        </div>
-    </div>
-    <div class="col-xs-5">
-        <div class="form-group">
+                    {!! Form::date('nascimento', null, ['placeholder'=> 'Nascimento', 'class' => 'form-control']) !!}
+                </div>
+            </div>
+        <?php
+        }
+    ?>
 
-            {!! Form::hidden('fantasia', null, ['placeholder'=> 'Nome Fantasia', 'class' => 'form-control']) !!}
-        </div>
-    </div>
+
+
+
     <div class="col-xs-7">
         <div class="form-group">
 
@@ -86,15 +101,12 @@
         </div>
     </div>
 
-
     <div class="col-xs-3">
         <div class="form-group">
 
             {!! Form::text('uf', null, ['placeholder'=> 'UF', 'class' => 'form-control','maxlength' => 8]) !!}
         </div>
     </div>
-
-
 
     <div class="col-xg-12">
         <a class="btn btn-xs btn-success" href="{{route('client.index')}}">Voltar</a>
