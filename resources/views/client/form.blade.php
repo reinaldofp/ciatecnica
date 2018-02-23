@@ -1,13 +1,13 @@
 <div class="row">
+
     <div class="col-xs-12">
         <div class="form-group">
             <strong>Escolha o tipo de cliente :</strong>
             {!! Form::select('tipocliente', array('1' => 'Pessoa Jurídica', '2' => 'Pessoa Física')) !!}
 
         </div>
-
     </div>
-    
+
     <div class="col-xs-3">
         <div class="form-group">
             <strong>Nome :</strong>

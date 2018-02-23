@@ -59,11 +59,27 @@ class ClientController extends Controller
             'fantasia'=> 'required',
 
         ]);
-        request()->except(['complemento']);
+        $dn=$request->input("nascimento");
+        list($anoniver, $mesniver, $dianiver) = explode('-', $dn);
 
-        Client::create($request->all());
-        return redirect()->route('client.index')->with('sucess','Cadastro realizado com sucesso');
+        // Descobre que dia é hoje e retorna a unix timestamp
+        $hoje = mktime(0, 0, 0, date('m'), date('d'), date('Y'));
+        // Descobre a unix timestamp da data de nascimento do fulano
+        $nascimento = mktime( 0, 0, 0, $mesniver, $dianiver, $anoniver);
+        // Depois apenas fazemos o cálculo já citado :)
+        $idade = floor((((($hoje - $nascimento) / 60) / 60) / 24) / 365.25);
 
+        if($idade < 19) {
+            echo "<br>Usuário não pode ser cadastrado na base de dados pois tem a idade menor que 19 anos";
+        ?>
+            <a href="javascript:history.back()" id="dark">Voltar</a>
+        <?php
+        }
+        else {
+            request()->except(['complemento']);
+            Client::create($request->all());
+            return redirect()->route('client.index')->with('sucess', 'Cadastro realizado com sucesso');
+        }
     }
 
     /**
