@@ -7,7 +7,7 @@
         </div>
     </div>
     <?php
-        $tipo = 2;
+        $tipo = 1;
         if($tipo == 1){
             // lista input de pessoa Jurídica
         ?>
@@ -67,7 +67,7 @@
     <div class="col-xs-7">
         <div class="form-group">
 
-            {!! Form::text('cep', null, ['placeholder'=> 'Cep', 'class' => 'form-control','maxlength' => 8]) !!}
+            {!! Form::text('cep', null, ['placeholder'=> 'Cep', 'class' => 'form-control']) !!}
         </div>
     </div>
     <div class="col-xs-5">
@@ -104,7 +104,7 @@
     <div class="col-xs-3">
         <div class="form-group">
 
-            {!! Form::text('uf', null, ['placeholder'=> 'UF', 'class' => 'form-control','maxlength' => 8]) !!}
+            {!! Form::text('uf', null, ['placeholder'=> 'UF', 'class' => 'form-control']) !!}
         </div>
     </div>
 
