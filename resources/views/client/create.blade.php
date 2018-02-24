@@ -9,7 +9,11 @@
             </div>
         </div>
     </div>
-
+    @if($message = Session::get('warning'))
+        <div class="alert alert-warning">
+            <p>{{$message}}</p>
+        </div>
+    @endif
     @if(count($errors) > 0)
         <div class="alert alert-danger">
             <strong>Atenção!!</strong> Há algum problema nesta interação. <br>

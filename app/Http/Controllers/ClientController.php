@@ -73,10 +73,9 @@ class ClientController extends Controller
 
 
             if($idade < 19) {
-                echo "<br>Usuário não pode ser cadastrado na base de dados pois tem a idade menor que 19 anos";
-                ?>
-                <a href="javascript:history.back()" id="dark">Voltar</a>
-                <?php
+              //  echo "<br>Usuário não pode ser cadastrado na base de dados pois tem a idade menor que 19 anos";
+                return redirect()->route('client.create')->with('warning', 'Idade inferior a 19 anos');
+
             }
             else {
 

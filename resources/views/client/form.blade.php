@@ -3,11 +3,10 @@
         <div class="form-group">
             <strong>Escolha o tipo de cliente :</strong>
             {!! Form::select('tipocliente', array('1' => 'Pessoa Jurídica', '2' => 'Pessoa Física')) !!}
-
         </div>
     </div>
     <?php
-        $tipo = 1;
+        $tipo = 2;
         if($tipo == 1){
             // lista input de pessoa Jurídica
         ?>
