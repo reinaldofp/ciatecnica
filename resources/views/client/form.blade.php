@@ -60,25 +60,25 @@
                 </div>
             </div>
 
-            <div class="col-xs-3" id="nome">
+            <div class="col-xs-3 hidden" id="nome">
                 <div class="form-group">
 
                     {!! Form::text('nome', null, ['placeholder'=> 'Nome', 'class' => 'form-control']) !!}
                 </div>
             </div>
-            <div class="col-xs-4" id="sobrenome">
+            <div class="col-xs-4  hidden" id="sobrenome">
                 <div class="form-group">
 
                     {!! Form::text('sobrenome', null, ['placeholder'=> 'Sobrenome', 'class' => 'form-control', 'maxlength' => 15 ]) !!}
                 </div>
             </div>
-            <div class="col-xs-3" id="cpf">
+            <div class="col-xs-3  hidden" id="cpf">
                 <div class="form-group">
 
                     {!! Form::text('cpf', null, ['placeholder'=> 'CPF', 'class' => 'form-control']) !!}
                 </div>
             </div>
-            <div class="col-xs-2" id="nascimento">
+            <div class="col-xs-2  hidden" id="nascimento">
                 <div class="form-group">
 
                     {!! Form::date('nascimento', null, ['placeholder'=> 'Nascimento', 'class' => 'form-control']) !!}
