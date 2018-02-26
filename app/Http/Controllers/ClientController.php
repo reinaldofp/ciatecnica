@@ -114,7 +114,6 @@ class ClientController extends Controller
         $client = Client::find($id);
         return view('client.show', compact('client'));
     }
-
     /**
      * Show the form for editing the specified resource.
      *
